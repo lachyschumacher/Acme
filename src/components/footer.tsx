@@ -3,24 +3,27 @@ import Link from "next/link";
 import Image from "next/image";
 
 const services = [
-  { name: "Web Design", href: "/services" },
-  { name: "Web Development", href: "/services" },
-  { name: "Graphic Design", href: "/services" },
-  { name: "See all →", href: "/services" },
+  { name: "One", href: "/one", },
+  { name: "Two", href: "/two", },
+  { name: "Three", href: "/three", },
+  { name: "Four", href: "/four", },
+  { name: "Five", href: "/five", }
 ];
 
 const company = [
-  { name: "About", href: "/about" },
-  { name: "Careers", href: "/careers" },
-  { name: "Contact", href: "/contact" },
-  { name: "Blog", href: "/blog" },
+  { name: "One", href: "/one", },
+  { name: "Two", href: "/two", },
+  { name: "Three", href: "/three", },
+  { name: "Four", href: "/four", },
+  { name: "Five", href: "/five", }
 ];
 
 const resources = [
-  { name: "Documentation", href: "/docs" },
-  { name: "Support", href: "/support" },
-  { name: "FAQ", href: "/faq" },
-  { name: "Community", href: "/community" },
+  { name: "One", href: "/one", },
+  { name: "Two", href: "/two", },
+  { name: "Three", href: "/three", },
+  { name: "Four", href: "/four", },
+  { name: "Five", href: "/five", }
 ];
 
 const columns = [
@@ -50,9 +53,9 @@ export default function Footer() {
               <div>Acme.</div>
             </Link>
             <p className="mt-3 max-w-xs text-sm text-black/60 dark:text-white/60">
-              Crafting thoughtful digital experiences for ambitious teams.
+              Its coming, something is coming, I just don't know what it is yet.
             </p>
-            <div className="mt-4 flex gap-3 text-sm text-black/60 dark:text-white/60">
+            {/* <div className="mt-4 flex gap-3 text-sm text-black/60 dark:text-white/60">
               <a href="#" className="hover:opacity-70 transition-opacity">
                 Twitter
               </a>
@@ -62,7 +65,7 @@ export default function Footer() {
               <a href="#" className="hover:opacity-70 transition-opacity">
                 LinkedIn
               </a>
-            </div>
+            </div> */}
           </div>
 
           {columns.map((col) => (

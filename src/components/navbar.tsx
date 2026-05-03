@@ -3,11 +3,14 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { Tally1, Tally2, Tally3, Tally4, Tally5 } from "lucide-react";
 
 const links = [
-  { name: "Web Design", href: "/services" },
-  { name: "Web Development", href: "/services" },
-  { name: "Graphic Design", href: "/services" }
+  { name: "One", href: "/one", icon: Tally1 },
+  { name: "Two", href: "/two", icon: Tally2 },
+  { name: "Three", href: "/three", icon: Tally3 },
+  { name: "Four", href: "/four", icon: Tally4 },
+  { name: "Five", href: "/five", icon: Tally5 }
 ];
 
 export default function Navbar() {
@@ -26,10 +29,10 @@ export default function Navbar() {
       className={`sticky top-0 z-40 transition-all duration-300 ${
         scrolled
           ? "border-b border-black/10 bg-white/70 backdrop-blur-md dark:border-white/10 dark:bg-black/60"
-          : "border-b border-transparent bg-transparent"
+          : "border-b border-black/10 bg-transparent"
       }`}
     >
-      <nav className="mx-auto px-6">
+      <nav className="mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           {/* Brand */}
           <Link
@@ -52,17 +55,21 @@ export default function Navbar() {
 
           {/* Desktop nav */}
           <ul className="hidden items-center gap-1 md:flex">
-            {links.map((link) => (
-              <li key={link.name}>
-                <Link
-                  href={link.href}
-                  className="relative inline-block rounded-full px-4 py-2 text-sm text-black/70 transition-colors hover:text-black dark:text-white/70 dark:hover:text-white"
-                >
-                  <span className="relative z-10">{link.name}</span>
-                  <span className="absolute inset-0 -z-0 rounded-full bg-black/5 opacity-0 transition-opacity duration-200 hover:opacity-100 dark:bg-white/10" />
-                </Link>
-              </li>
-            ))}
+            {links.map((link) => {
+              const Icon = link.icon;
+              return (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="relative inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm text-black/70 transition-colors hover:text-black dark:text-white/70 dark:hover:text-white"
+                  >
+                    <Icon className="relative z-10 h-4 w-4" strokeWidth={2} />
+                    <span className="relative z-10">{link.name}</span>
+                    <span className="absolute inset-0 -z-0 rounded-full bg-black/5 opacity-0 transition-opacity duration-200 hover:opacity-100 dark:bg-white/10" />
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
 
           {/* Hamburger */}
@@ -100,26 +107,31 @@ export default function Navbar() {
           }`}
         >
           <ul className="flex flex-col gap-1 pt-2">
-            {links.map((link, i) => (
-              <li
-                key={link.name}
-                className={`transform transition-all duration-300 ${
-                  open
-                    ? "translate-y-0 opacity-100"
-                    : "-translate-y-2 opacity-0"
-                }`}
-                style={{ transitionDelay: open ? `${i * 50}ms` : "0ms" }}
-              >
-                <Link
-                  href={link.href}
-                  onClick={() => setOpen(false)}
-                  className="flex items-center justify-between rounded-lg px-4 py-3 text-base text-black/80 transition-colors hover:bg-black/5 dark:text-white/80 dark:hover:bg-white/10"
+            {links.map((link, i) => {
+              const Icon = link.icon;
+              return (
+                <li
+                  key={link.name}
+                  className={`transform transition-all duration-300 ${
+                    open
+                      ? "translate-y-0 opacity-100"
+                      : "-translate-y-2 opacity-0"
+                  }`}
+                  style={{ transitionDelay: open ? `${i * 50}ms` : "0ms" }}
                 >
-                  <span>{link.name}</span>
-                  <span className="text-black/30 dark:text-white/30">→</span>
-                </Link>
-              </li>
-            ))}
+                  <Link
+                    href={link.href}
+                    onClick={() => setOpen(false)}
+                    className="flex items-center justify-between rounded-lg px-4 py-3 text-base text-black/80 transition-colors hover:bg-black/5 dark:text-white/80 dark:hover:bg-white/10"
+                  >
+                    <span className="flex items-center gap-3">
+                      <Icon className="h-5 w-5 text-black/50 dark:text-white/50" strokeWidth={2} />
+                      {link.name}
+                    </span>
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </nav>
